@@ -7,49 +7,58 @@ st.set_page_config(page_title="Tanmay Dhar | Portfolio", page_icon="🎓", layou
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    /* Main background */
     .stApp {
-        background-color: #E6F3FA; /* Light blue background */
-        color: #1A3C5E; /* Dark blue text for contrast */
+        background-color: #E6F3FA;
+        color: #1A3C5E;
     }
-
-    /* Sidebar styling */
     [data-testid="stSidebar"] {
-        background-color: #1A3C5E; /* Dark blue for sidebar */
+        background-color: #1A3C5E;
     }
     [data-testid="stSidebar"] * {
-        color: #FFFFFF !important; /* White for all sidebar text */
+        color: #FFFFFF !important;
     }
-    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 {
-        color: #FFFFFF !important; /* White for sidebar headers */
-    }
-    /* Increase Contact subheader size */
     [data-testid="stSidebar"] h2 {
-        font-size: 28px !important; /* Larger font size for Contact */
+        font-size: 28px !important;
     }
-    /* Sidebar links */
     [data-testid="stSidebar"] a {
-        color: #E0F7FA !important; /* Light cyan for sidebar links */
+        color: #E0F7FA !important;
         text-decoration: none;
     }
     [data-testid="stSidebar"] a:hover {
-        color: #B2EBF2 !important; /* Slightly darker cyan on hover */
+        color: #B2EBF2 !important;
         text-decoration: underline;
     }
-    /* Sidebar resume button */
     [data-testid="stSidebar"] a[href*="data:application/pdf"] {
-        background-color: #4A90E2; /* Vibrant blue button */
+        background-color: #4A90E2;
         padding: 8px 16px;
         border-radius: 5px;
-        color: #FFFFFF !important; /* White text for button */
+        color: #FFFFFF !important;
         font-weight: bold;
+        display: inline-block;
+        margin-top: 20px;
     }
     [data-testid="stSidebar"] a[href*="data:application/pdf"]:hover {
-        background-color: #2E6DA4; /* Darker blue on hover */
+        background-color: #2E6DA4;
         text-decoration: none;
     }
-
-    /* Tab styling */
+    .social-icons {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 10px;
+    }
+    .social-icons a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: bold;
+        color: #FFFFFF !important;
+    }
+    .social-icons img {
+        width: 24px;
+        height: 24px;
+    }
+        /* Tab styling */
     .stTabs [data-baseweb="tab-list"] {
         background-color: #D1E8F2;
         border-bottom: 2px solid #4A90E2; /* Vibrant blue for tab border */
@@ -127,19 +136,34 @@ with st.sidebar:
     st.subheader("Contacts:")
     st.markdown("tanmaydhar24-26@bibs.co.in")
     st.markdown("+91 6290255794")
-    st.markdown("[LinkedIn](https://www.linkedin.com/in/tanmay-dhar-business-analyst-data-scientist-data-analyst)")
-    st.markdown("[GitHub](https://github.com/TanmayDhar36)")
 
+    # Social Links with Icons
+    st.markdown("""
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/tanmay-dhar-business-analyst-data-scientist-data-analyst" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"> LinkedIn
+        </a>
+        <a href="https://github.com/TanmayDhar36" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"> GitHub
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Download Resume Button
     with open("Tanmay_Dhar.pdf", "rb") as f:
         pdf = base64.b64encode(f.read()).decode("utf-8")
-        st.markdown(f'<a href="data:application/pdf;base64,{pdf}" download="Tanmay_Dhar_Resume.pdf">📄 Download Resume</a>', unsafe_allow_html=True)
+        st.markdown(
+            f'<a href="data:application/pdf;base64,{pdf}" download="Tanmay_Dhar_Resume.pdf">📄 Download Resume</a>',
+            unsafe_allow_html=True)
 
 # --- MAIN SECTION ---
 st.title("🎓 Tanmay Dhar's Portfolio")
-st.markdown("Welcome to my professional portfolio showcasing my work, skills, and experience in **Business Analytics and Data Science**.")
+st.markdown(
+    "Welcome to my professional portfolio showcasing my work, skills, and experience in **Business Analytics and Data Science**.")
 
 # --- TABS ---
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["💼 Experience", "🎓 Education", "🧠 Skills & Tools", "📜 Certifications", "📁 Projects"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(
+    ["💼 Experience", "🎓 Education", "🧠 Skills & Tools", "📜 Certifications", "📁 Projects"])
 
 # Experience Tab
 with tab1:
@@ -149,14 +173,14 @@ with tab1:
     *Apr 2024 – Jun 2024*  
     - Built interactive Tableau dashboards  
     - Delivered insights for sales and HR teams
-    
+
     [*Certificate*](https://drive.google.com/file/d/1a2S1fNxoKLonjdkRecfFHMTo-QdU1b--/view)
 
     **Data Analyst Intern – Abhyaz-MTAB (Remote)**  
     *Jan 2024 – Mar 2024*  
     - Cleaned & visualized datasets  
     - Helped optimize decision-making
-    
+
     [*Certificate*](https://drive.google.com/file/d/1pefF0znffT1BKM70ezj7gAZCBOUG3C3R/view)
 
     **Production Engineer – Landis Gyr Ltd (Kolkata)**  
