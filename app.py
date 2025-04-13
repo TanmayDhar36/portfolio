@@ -1,34 +1,46 @@
 import streamlit as st
 import base64
 
+# Encode the background image to base64
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Replace 'Untitled design.png' with the correct path if it's not in the same directory
+bg_image = get_base64_image("Untitled design.png")
+
 # PAGE CONFIG
 st.set_page_config(page_title="Tanmay Dhar | Portfolio", page_icon="🎓", layout="wide")
 
 # --- CUSTOM CSS ---
-st.markdown("""
+st.markdown(f"""
     <style>
-    .stApp {
-        background-color: #E6F3FA;
-        color: #1A3C5E;
-    }
-    [data-testid="stSidebar"] {
-        background-color: #1A3C5E;
-    }
-    [data-testid="stSidebar"] * {
+    .stApp {{
+        background-image: url('data:image/png;base64,{bg_image}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #FFFFFF;
+    }}
+    [data-testid="stSidebar"] {{
+        background-color: rgba(26, 60, 94, 0.5); /* 50% transparent based on #1A3C5E */
+    }}
+    [data-testid="stSidebar"] * {{
         color: #FFFFFF !important;
-    }
-    [data-testid="stSidebar"] h2 {
+    }}
+    [data-testid="stSidebar"] h2 {{
         font-size: 28px !important;
-    }
-    [data-testid="stSidebar"] a {
+    }}
+    [data-testid="stSidebar"] a {{
         color: #E0F7FA !important;
         text-decoration: none;
-    }
-    [data-testid="stSidebar"] a:hover {
+    }}
+    [data-testid="stSidebar"] a:hover {{
         color: #B2EBF2 !important;
         text-decoration: underline;
-    }
-    [data-testid="stSidebar"] a[href*="data:application/pdf"] {
+    }}
+    [data-testid="stSidebar"] a[href*="data:application/pdf"] {{
         background-color: #4A90E2;
         padding: 8px 16px;
         border-radius: 5px;
@@ -36,92 +48,101 @@ st.markdown("""
         font-weight: bold;
         display: inline-block;
         margin-top: 20px;
-    }
-    [data-testid="stSidebar"] a[href*="data:application/pdf"]:hover {
+    }}
+    [data-testid="stSidebar"] a[href*="data:application/pdf"]:hover {{
         background-color: #2E6DA4;
         text-decoration: none;
-    }
-    .social-icons {
+    }}
+    .social-icons {{
         display: flex;
         align-items: center;
         gap: 20px;
         margin-top: 10px;
-    }
-    .social-icons a {
+    }}
+    .social-icons a {{
         display: flex;
         align-items: center;
         gap: 6px;
         font-weight: bold;
         color: #FFFFFF !important;
-    }
-    .social-icons img {
+    }}
+    .social-icons img {{
         width: 24px;
         height: 24px;
-    }
-        /* Tab styling */
-    .stTabs [data-baseweb="tab-list"] {
-        background-color: #D1E8F2;
-        border-bottom: 2px solid #4A90E2; /* Vibrant blue for tab border */
-    }
-    .stTabs [data-baseweb="tab"] {
-        color: #1A3C5E;
-        background-color: #E6F3FA;
+    }}
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {{
+        background-color: transparent;
+        border-bottom: 2px solid #4A90E2;
+    }}
+    .stTabs [data-baseweb="tab"] {{
+        color: #FFFFFF;
+        background-color: transparent;
         padding: 10px 20px;
         margin-right: 5px;
         border-radius: 8px 8px 0 0;
-    }
-    .stTabs [data-baseweb="tab"][aria-selected="true"] {
-        background-color: #4A90E2; /* Vibrant blue for active tab */
-        color: #FFFFFF; /* White text for active tab */
+    }}
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {{
+        background-color: #2E6DA4; /* Deep blue for active tab */
+        color: #FFFFFF;
         font-weight: bold;
-    }
+    }}
 
     /* Content area */
-    .stMarkdown, .stMarkdown p, .stMarkdown li {
-        color: #1A3C5E; /* Dark blue text for content */
-    }
-    h1, h2, h3, h4 {
-        color: #2E6DA4; /* Medium blue for headers */
-    }
+    .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown a {{
+        color: #FFFFFF; /* White text for all content */
+    }}
+    h1, h2, h3, h4 {{
+        color: #FFFFFF; /* White headers */
+    }}
 
     /* Main content links */
-    a {
-        color: #D81B60; /* Pink for links to stand out */
+    a {{
+        color: #FFFFFF; /* White for links */
         text-decoration: none;
-    }
-    a:hover {
-        color: #F06292; /* Lighter pink on hover */
+    }}
+    a:hover {{
+        color: #E0F7FA; /* Light cyan on hover for contrast */
         text-decoration: underline;
-    }
+    }}
 
     /* Button for resume download in main content (if any) */
-    .stMarkdown a[href*="data:application/pdf"] {
+    .stMarkdown a[href*="data:application/pdf"] {{
         background-color: #4A90E2; /* Vibrant blue button */
         padding: 8px 16px;
         border-radius: 5px;
         color: #FFFFFF;
         font-weight: bold;
-    }
-    .stMarkdown a[href*="data:application/pdf"]:hover {
+    }}
+    .stMarkdown a[href*="data:application/pdf"]:hover {{
         background-color: #2E6DA4; /* Darker blue on hover */
         text-decoration: none;
-    }
+    }}
 
     /* Pill styling for skills */
-    .skills-container {
+    .skills-container {{
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-    }
-    .skill-pill {
+    }}
+    .skill-pill {{
         background-color: #D1E8F2; /* Light blue pill background */
-        color: #1A3C5E; /* Dark blue text */
+        color: #1A3C5E; /* Dark blue text for readability */
         padding: 5px 12px;
         border-radius: 15px;
         font-size: 14px;
         display: inline-block;
         margin: 3px;
-    }
+    }}
+
+    /* Certification highlight */
+    .cert-highlight {{
+        background-color: #FFFFFF;
+        color: #000000; /* Black text for contrast */
+        padding: 2px 6px;
+        border-radius: 3px;
+        display: inline;
+    }}
     </style>
 """, unsafe_allow_html=True)
 
@@ -163,25 +184,23 @@ st.markdown(
 
 # --- TABS ---
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
-    ["💼 Experience", "🎓 Education", "🧠 Skills & Tools", "📜 Certifications", "📁 Projects"])
+    ["Experience", "Education", "Skills & Tools", "Certifications", "Projects"])
 
 # Experience Tab
 with tab1:
-    st.subheader("💼 Experience")
+    st.subheader("Experience")
     st.markdown("""
     **Data Analyst Intern – Afame Technologies (Remote)**  
     *Apr 2024 – Jun 2024*  
     - Built interactive Tableau dashboards  
     - Delivered insights for sales and HR teams
-
-    [*Certificate*](https://drive.google.com/file/d/1a2S1fNxoKLonjdkRecfFHMTo-QdU1b--/view)
+    - [*View Certificate*](https://drive.google.com/file/d/1a2S1fNxoKLonjdkRecfFHMTo-QdU1b--/view)
 
     **Data Analyst Intern – Abhyaz-MTAB (Remote)**  
     *Jan 2024 – Mar 2024*  
     - Cleaned & visualized datasets  
     - Helped optimize decision-making
-
-    [*Certificate*](https://drive.google.com/file/d/1pefF0znffT1BKM70ezj7gAZCBOUG3C3R/view)
+    - [*View Certificate*](https://drive.google.com/file/d/1pefF0znffT1BKM70ezj7gAZCBOUG3C3R/view)
 
     **Production Engineer – Landis Gyr Ltd (Kolkata)**  
     *Oct 2019 – Apr 2023*  
@@ -190,24 +209,21 @@ with tab1:
 
 # Education Tab
 with tab2:
-    st.subheader("🎓 Education")
+    st.subheader("Education")
     st.markdown("""
-    **MBA + PGPBA&DS – BIBS**  
-    *2024 – Present*  
-    - 86% in Sem 1  
+    **Bengal Institute Of Business Studies (BIBS)**  
+    MBA + PGP Business Analytics & Data Science, *2024 – Present*, 86% (PGP Sem 1)
 
-    **B.Tech – Electronics & Communication**  
-    Gargi Memorial Institute, *2020 – 2023*  
-    - 82%
+    **Gargi Memorial Institute Of Technology**  
+    B.Tech in Electronics & Communication Engineering, *2020 – 2023*, 82%
 
-    **Diploma – E&TC**  
-    JCG Polytechnic, *2016 – 2019*  
-    - 74%
+    **Jnan Chandra Ghosh Polytechnic**  
+    Diploma in Electronics & Tele-Communication Engineering, *2016 – 2019*, 74%
     """)
 
 # Skills Tab
 with tab3:
-    st.subheader("🧠 Skills & Tools")
+    st.subheader("Skills & Tools")
     st.markdown("""
     <div>
         <strong>Programming Language:</strong>
@@ -241,16 +257,16 @@ with tab3:
 
 # Certifications Tab
 with tab4:
-    st.subheader("📜 Certifications")
+    st.subheader("Certifications")
     st.markdown("""
-    - [Full Stack Data Science Program *(Jul–Dec 2023)*](https://verified.sertifier.com/en/verify/95034435667164/) 
-    - [Machine Learning with Python – IIT Kanpur *(Dec 2024)*](https://verify.eicta.digitalcredentials.in/fa37245d-31b3-46d4-a09b-ff55b476fcd1?utm_source=direct_link&utm_medium=portal)  
+    - <span class="cert-highlight">Full Stack Data Science Program</span> *(Jul–Dec 2023)* [View Certificate](https://verified.sertifier.com/en/verify/95034435667164/) 
+    - <span class="cert-highlight">Machine Learning with Python – IIT Kanpur</span> *(Dec 2024)* [View Certificate](https://verify.eicta.digitalcredentials.in/fa37245d-31b3-46d4-a09b-ff55b476fcd1?utm_source=direct_link&utm_medium=portal)  
     - [🗂️ View All](https://drive.google.com/drive/folders/1DABdoTV6QMZd0nt0D5vj3HiHhNzExNn6?usp=drive_link)
-    """)
+    """, unsafe_allow_html=True)
 
 # Projects Tab
 with tab5:
-    st.subheader("📁 Projects")
+    st.subheader("Projects")
     project_data = [
         {
             "title": "Play Store App Review Analysis",
@@ -273,8 +289,8 @@ with tab5:
             "link": "https://github.com/TanmayDhar36/ML_Bike_Sharing_Demand_Prediction_Regression_Project"
         },
     ]
-    for p in project_data:
+    for i, p in enumerate(project_data, 1):
         st.markdown(f"""
-        **[{p['title']}]({p['link']})**  
+        **{i}. [{p['title']}]({p['link']})**  
         *{p['desc']}*
         """)
