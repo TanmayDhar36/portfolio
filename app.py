@@ -155,7 +155,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.subheader("Contacts:")
-    st.markdown("tanmaydhar24-26@bibs.co.in")
+    st.markdown("tanmaydhar36@gmail.com")
     st.markdown("+91 6290255794")
 
     # Social Links with Icons
