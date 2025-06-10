@@ -190,6 +190,12 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
 with tab1:
     st.subheader("Experience")
     st.markdown("""
+    **AI Intern - StarApp Solution**
+    *May 2025 - Present*
+    -Worked with FusK, an AI framework, and Django to develop and integrate machine learning features into web applications
+    -Contributed to building intelligent systems by leveraging backend development and AI model integration.
+    -Collaborated with cross-functional teams to enhance product scalability and automation.
+    
     **Data Analyst Intern – Afame Technologies (Remote)**  
     *Apr 2024 – Jun 2024*  
     - Built interactive Tableau dashboards  
