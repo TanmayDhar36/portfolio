@@ -148,7 +148,7 @@ st.markdown(f"""
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.image("Tanmay Dhar.JPG")
+    st.image("Tanmay_Dhar_optimized.jpg")
     st.title("Tanmay Dhar")
     st.markdown("**Data Analyst | Business Analyst | Data Science Enthusiast**")
     st.markdown("📍 Kolkata, India")
@@ -171,7 +171,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     # Download Resume Button
-    with open("Tanmay_Dhar.pdf", "rb") as f:
+    with open("TanmayDharCV.pdf", "rb") as f:
         pdf = base64.b64encode(f.read()).decode("utf-8")
         st.markdown(
             f'<a href="data:application/pdf;base64,{pdf}" download="Tanmay_Dhar_Resume.pdf">📄 Download Resume</a>',
@@ -190,11 +190,11 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
 with tab1:
     st.subheader("Experience")
     st.markdown("""
-    **AI Intern - StarApp Solution**
-    *May 2025 - Present*
-    -Worked with FusK, an AI framework, and Django to develop and integrate machine learning features into web applications
-    -Contributed to building intelligent systems by leveraging backend development and AI model integration.
-    -Collaborated with cross-functional teams to enhance product scalability and automation.
+    **AI Intern – StarApp Solution (Bengaluru, India)**  
+    *May 2024 – Present*  
+    - Worked with Flask and Django to develop and deploy AI-powered web applications.  
+    - Contributed to building intelligent systems by leveraging backend development and AI model integration.
+    - Collaborated with cross-functional teams to enhance product scalability and automation. 
     
     **Data Analyst Intern – Afame Technologies (Remote)**  
     *Apr 2024 – Jun 2024*  
@@ -208,7 +208,7 @@ with tab1:
     - Helped optimize decision-making
     - [*View Certificate*](https://drive.google.com/file/d/1pefF0znffT1BKM70ezj7gAZCBOUG3C3R/view)
 
-    **Production Engineer – Landis Gyr Ltd (Kolkata)**  
+    **Production Engineer – Landis Gyr Ltd (Kolkata, India)**  
     *Oct 2019 – Apr 2023*  
     - Oversaw production operations
     """)
